@@ -1,0 +1,43 @@
+
+
+= FIND GRC-PC ORPHANS
+
+- /n/groups/htem/Segmentation/shared-nondev/cb2_segmentation/analysis_mf_grc/purkinje
+- python -i /n/groups/htem/Segmentation/shared-nondev/cb2_segmentation/analysis_mf_grc/purkinje/run_grc_orphans_210429_setup01.py
+    orphaned segments tracking: https://docs.google.com/spreadsheets/d/1oEugcMwGCaM1kL6LUAbo-ks4ThtWTNs1cOIdttnEGcs/edit#gid=976745930
+
+
+= generate mesh summaries for touch detection
+    python gen_mesh_db_pc_210429.py
+= generate touch dictionary
+
+
+
+= CONSTRUCT GRC-PC WEIGHT DATABASE
+- gen_210429_setup01.py
+Then coalesce disconnected synapse
+    python coalesce/gen3.py gen_210429_setup01_syndb_threshold_10.gz
+        gen3 is used for 210430+ databases
+        gen_210429_setup01_syndb_threshold_10 has an error where z_length is added by 1
+
+- python gen_contacts_grc_210429.py
+Make contact db
+    /n/groups/htem/Segmentation/shared-nondev/cb2_segmentation/analysis_mf_grc/purkinje/grc_pc_touches_210429.gz
+
+
+= CONSTRUCT MF-GRC WEIGHT DATABASE
+- python gen_210429_setup01_v2.py
+Then coalesce disconnected synapse
+- python coalesce2.py gen_210429_setup01_v2_syndb_threshold_20.gz
+    coalesce2 is used for 210429+
+
+
+gen_210518_setup01_v2_syndb_threshold_20_coalesced.gz
+
+
+
+python gen_210518_setup01_v2.py --overwrite 1
+python coalesce2.py gen_210518_setup01_v2_syndb_threshold_20.gz
+python gen_mf_locs_210518.py
+python gen_input_graph_210519_all.py
+
