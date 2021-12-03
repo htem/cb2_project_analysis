@@ -32,5 +32,8 @@ See README.md in `analysis/` for more information.
   * [Modified Neuroglancer front-end](https://github.com/htem/neuroglancer_pr/tree/segway_pr_v2)
   * [Python back-end](https://github.com/htem/segway.mdseg)
 
+## View counter
+![Visitor Count](https://profile-counter.glitch.me/cb2_project_analysis/count.svg)
+
 ## License
 This software is licensed under the [MIT](LICENSE) license.
