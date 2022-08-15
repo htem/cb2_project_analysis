@@ -1,0 +1,33 @@
+
+scriptn=batch_1020
+rm -f $scriptn
+for trial in 5 6 7 8 9; do
+for variability in `seq 0.05 0.05 1`; do
+    cmd="python pc_test_220320_eval.py test2 --variability $variability --trial $trial "
+    echo $cmd >> $scriptn
+    cmd="python pc_test_220320_eval.py test2 --variability $variability --trial $trial --keep_pct .5"
+    echo $cmd >> $scriptn
+    cmd="python pc_test_220320_eval.py test2 --variability $variability --trial $trial --keep_pct .25"
+    echo $cmd >> $scriptn
+    cmd="python pc_test_220320_eval.py test2 --variability $variability --trial $trial --keep_pct .5 --selective 1"
+    echo $cmd >> $scriptn
+    cmd="python pc_test_220320_eval.py test2 --variability $variability --trial $trial --keep_pct .25 --selective 1"
+    echo $cmd >> $scriptn
+done
+done
+parallel --bar -j 12 :::: $scriptn
+
+
+scriptn=batch_1023
+rm -f $scriptn
+# for trial in 0 1 2 3 4; do
+for trial in 5 6 7 8 9; do
+for keep_pct in `seq 0.05 0.05 1`; do
+    cmd="python pc_test_220320_eval.py test3 --trial $trial --keep_pct $keep_pct"
+    echo $cmd >> $scriptn
+    cmd="python pc_test_220320_eval.py test3 --trial $trial --keep_pct $keep_pct --selective 1"
+    echo $cmd >> $scriptn
+done
+done
+parallel --bar -j 8 :::: $scriptn
+
