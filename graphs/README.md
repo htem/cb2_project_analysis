@@ -11,7 +11,7 @@
 
 The first release of this repo interminglely uses `SynapseGraph`, `syndb`, `input_graph` for different analyses, which can be confusing and difficult to use for new (and old) users. Here we collapse the different formats to NetworkX so that research dissemination is easier. With this potential users will only need to install and learn the syntax of `NetworkX` to analyze the provided graphs.
 
-For de-novo datasets, instead of the legacy flow `SynapseGraph` -> `syndb` -> `input_graph`, we will/should simply just do `SynapseGraph` -> `NetworkX`.
+For de-novo datasets, instead of the legacy flow `SynapseGraph` -> `syndb` -> `input_graph`, new users should always perform `SynapseGraph` -> `NetworkX` for future portability.
 
 ## MF-GrC graphs
 
@@ -24,14 +24,14 @@ For an example usage, see the Jupyter notebooks in [`./notebooks`](./notebooks).
 There are several levels of representation of MF-GrC connectivity:
 - With all synapses, extracted as-is (`all`)
 - With nearby, possibly duplicated synapses coalesced (`coalesced`)
-    - See https://github.com/htem/cb2_project_analysis/blob/main/analysis/gen_db/coalesce2.py
+    - See the legacy [coalesce2.py](/analysis/gen_db/coalesce2.py) script.
         - This computes `all` -> `coalesced`
 - With synapses between pairs of neurons collapsed to a single binary connection (`binary`)
-    - See, e.g., https://github.com/htem/cb2_project_analysis/blob/main/analysis/gen_db/mf_grc/gen_input_graph_210520_all.py
+    - See, e.g., [gen_input_graph_210520_all.py](/analysis/gen_db/mf_grc/gen_input_graph_210520_all.py)
         - This computes `coalesced` -> `input_graph`
     - We used primarily used this graph for connectivity analysis and dimensionality and activity simulation
 - Replicated mf-grc binary graphs (`replicated`)
-    - `binary` graph is replicated along the z-axis with connectivity re-randomized
+    - The `binary` graph is replicated along the z-axis with connectivity re-randomized
     - Usage: large-scale dimensionality and activity simulation
         - Simulation scripts loads `input_graph`, and in memory randomizes the graph
 
@@ -50,6 +50,7 @@ See [`notebooks/test_mf_grc_networkx.ipynb`](./notebooks/test_mf_grc_networkx.ip
 - [230301](https://github.com/htem/cb2_project_analysis_files/releases/download/230103/synapsegraph_mf_grc_230301.npz)
     - One can generate a NetworkX graph directly with the built-in `make_networkx_graph()`
     - See [`make_grc_mf_graph.py`](./make_grc_mf_graph.py)
+        - [ ] TODO: make `SynapseGraph` be able to read from binary files besides the internal MongoDB servers.
 
 ### TODOs
 
