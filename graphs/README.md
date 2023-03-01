@@ -17,7 +17,7 @@ For de-novo datasets, instead of the legacy flow `SynapseGraph` -> `syndb` -> `i
 
 TLDR: what you're looking for is probably the binary connectivity graph of MF-GrC, which can be downloaded at: https://github.com/htem/cb2_project_analysis_files/releases/download/230103/graph_mf_grc_binary_210519.gz. This graph was used for both connectivity analyses as well as simulations.
 
-For an example usage, see the Jupyter notebooks in [`./notebooks`](./notebooks).
+For an example usage, see the Jupyter notebooks in [`notebooks/`](./notebooks).
 
 ### Levels of available graphs
 
@@ -29,6 +29,7 @@ There are several levels of representation of MF-GrC connectivity:
 - With synapses between pairs of neurons collapsed to a single binary connection (`binary`)
     - See, e.g., [gen_input_graph_210520_all.py](/analysis/gen_db/mf_grc/gen_input_graph_210520_all.py)
         - This computes `coalesced` -> `input_graph`
+        - Will also work with `all` -> `input_graph`; synapse coalescing is not necessary.
     - We used primarily used this graph for connectivity analysis and dimensionality and activity simulation
 - Replicated mf-grc binary graphs (`replicated`)
     - The `binary` graph is replicated along the z-axis with connectivity re-randomized
