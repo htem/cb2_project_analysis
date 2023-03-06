@@ -1,5 +1,5 @@
 # CB2 project
-This code repository accompanies the publication [Structured connectivity in the cerebellum enables noise-resilient pattern separation](https://www.biorxiv.org/content/10.1101/2021.11.29.470455v1).
+This code repository accompanies the Nature 2022 publication [Structured cerebellar connectivity supports resilient pattern separation](https://www.nature.com/articles/s41586-022-05471-w) ([paywall-free ShareIT link](https://rdcu.be/c0hLW)).
 
 ## Updates!
 
