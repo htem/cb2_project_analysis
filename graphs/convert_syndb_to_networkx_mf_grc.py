@@ -12,15 +12,11 @@ from funlib.geometry import Coordinate
 from segway.graph.synapse_graph import SynapseGraph
 
 '''
-`syndb` is an internal format used to represent connectivity between two layers.
-This script converts this format to a more standard networkX format
+`syndb` is an internal format used to represent connectivity between two layers. This script converts syndb to NetworkX.
 
 Ex: 
-
-`python convert_syndb_to_networkx_mf_grc.py ../analysis/gen_db/mf_grc/gen_210518_setup01_v2_syndb_threshold_20_coalesced.gz graph_mf_grc_synapse_210518_coalesced.gz --synapsegraph ./synapsegraph_mf_grc_230301.npz`
-
-`python convert_syndb_to_networkx_mf_grc.py ../analysis/gen_db/mf_grc/gen_210518_setup01_v2_syndb_threshold_20.gz graph_mf_grc_synapse_210518_all.gz --synapsegraph ./synapsegraph_mf_grc_230301.npz`
-
+- `python convert_syndb_to_networkx_mf_grc.py ../analysis/gen_db/mf_grc/gen_210518_setup01_v2_syndb_threshold_20_coalesced.gz graph_mf_grc_synapse_210518_coalesced.gz --synapsegraph ./synapsegraph_mf_grc_230301.npz`
+- `python convert_syndb_to_networkx_mf_grc.py ../analysis/gen_db/mf_grc/gen_210518_setup01_v2_syndb_threshold_20.gz graph_mf_grc_synapse_210518_all.gz --synapsegraph ./synapsegraph_mf_grc_230301.npz`
 '''
 
 def load_syndb(in_fname):
@@ -30,7 +26,7 @@ def convert(in_fname, synapsegraph_file=None):
 
     neurondb = None
     if synapsegraph_file is not None:
-        # we need synapsegraph to fill in some attributes
+        # we need synapsegraph to fill in neuron attributes
         neurondb = SynapseGraph.from_file(synapsegraph_file).neuron_db_data
 
     syndb = load_syndb(in_fname)
@@ -59,12 +55,9 @@ def convert(in_fname, synapsegraph_file=None):
                     }
                 G.add_node(mf_id, **mf_attrs)
             for syn in syns:
-                # for attr in ['syn_loc', 'syn_loc0', 'pre_loc', 'post_loc']:
-                #     if attr in syn:
-                #         # convert coordinates to tuples
-                #         syn[attr] = tuple(attr)
                 for attr in syn:
                     if isinstance(syn[attr], Coordinate):
+                        # convert `Coordinate`s to simple tuples
                         syn[attr] = tuple(syn[attr])
                 G.add_edge(mf_id, grc_id, **syn)
     return G
