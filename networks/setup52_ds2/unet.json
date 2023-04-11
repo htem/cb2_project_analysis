@@ -1,0 +1,1 @@
+{"raw": "Placeholder:0", "affs": "Squeeze:0", "gt_affs": "Placeholder_1:0", "loss_weights_affs": "Placeholder_2:0", "loss": "mean_squared_error/value:0", "optimizer": "Adam", "input_shape": [84, 268, 268], "output_shape": [48, 56, 56], "summary": "setup04_eucl_loss:0", "out_dims": 3, "out_dtype": "uint8"}

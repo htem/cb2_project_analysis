@@ -1,0 +1,2 @@
+{"input_shape": [80, 316, 316], "output_shape": [60, 192, 192], "raw": "raw", "lsds": "lsds", "inputs": ["raw"], "outputs": {"affs": {"out_dims": 3, "out_dtype": "uint8"}}}
+
