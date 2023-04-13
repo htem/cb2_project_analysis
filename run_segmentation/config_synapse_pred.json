@@ -1,0 +1,200 @@
+{
+    "Input":
+        {
+            "experiment": "cb2_v4_synapse_pred_cleft_setup01",
+            "raw_file" : "/n/groups/htem/temcagt/datasets/cb2/zarr_volume/cb2_v3.zarr",
+            "raw_dataset": "volumes/raw_mipmap/s2_rechunked",
+            "output_file" : "/n/groups/htem/Segmentation/cb2_v4/synapse_pred_cleft_setup01.n5",
+            "db_host": "mongodb://10.117.28.250:27018/",
+            "db_name": "cb2_v4_synapse_pred_cleft_setup01",
+            "log_dir": ".logs/cb2_v4_synapse_pred_cleft_setup01",
+            "sub_roi_offset": [2800, 114688, 131072],
+            "sub_roi_shape": [44000, 425984, 786432],
+            // "sub_roi_offset": [2800, 296960, 409600],
+            // "sub_roi_shape": [44000, 65536, 65536],
+
+            "note": "[2800, 131072, 262144] to [2800, 655360, 786432]",
+            "note": "[65536, 32768, 70] to [196608, 163840, 70]",
+
+            "delete_section_list": [
+            ],
+
+            "replace_section_list": [
+                [50, 70], [51, 70], [52, 70], [53, 70], [54, 70], [55, 70], [56, 70], [57, 70], [58, 70], [59, 70],
+                [60, 70], [61, 70], [62, 70], [63, 70], [64, 70], [65, 70], [66, 70], [67, 70], [68, 70], [69, 70],
+                [73, 72],
+                [81,80], [88,87], [89, 90], [91,92], [99,98], 
+                [135,134], [143,142], [175,174], 
+                [184,183], [186,185], [187,188], 
+                [192,191], [193,191], [194,196], [195,196], 
+                [202,201], [217,216], [276,275], 
+                [303,302], [334,333], [340,339], [341,342], [344,343], [346,347], 
+                [366,365], [387,386], [393,392], 
+                [445,444], [448,449], [457,456], [493,492], [496,495], [497,498], 
+                [507,506], [509,508], [511,510], [512,513], [521,520], [533,532], 
+                [538,537], [540,541], [543,544], [548,547], [558,557], [561,560], 
+                [562,563], [565,564], [566,564], [567,570], [568,570], [569,570],
+                [572,573], [579,578], [580,581], [586,585], [594,593], 
+                [604,603], [605,606], [610,611], [619,618], [621,620], [622,624], 
+                [623,624], [627,628], [672,671], [674,675], [678,679], [683,682], 
+                [685,686], [688,687], [689,690], [719,718], [724,723], [727,726],
+                [730,731], [745,744], [746,747], [748,749], [771,770], 
+                [777,776], [786,785], [791,790], [797,796], [799,798], [801,800], 
+                [802,800], [803,805], [804,805], [811,810], [812,813], [825,824], 
+                [827,826], [828,829], [832,831], [836,835], [844,843], [849,848], 
+                [851,850], [853,852], [854,855], [881,880], [886,885], [887,885], 
+                [888,889], [891,890], [893,892], [895,896], [899,900], [905,904], 
+                [906,907], [911,912], [917,916], [925,924], [927,928], [941,940], 
+                [950,949], [960,959], [961,962], [964,965], [970,969], [977,976], 
+                [991,990], [997,998], 
+                [1010,1009], [1012,1011], [1014,1015], [1016,1017], [1023,1022], 
+                [1027,1026], [1028,1029], [1032,1033], [1040,1039], [1044,1043], 
+                [1047,1046], [1052,1051], [1062,1061], [1063,1064], [1066,1065], 
+                [1067,1065], [1068,1069], [1071,1070], [1072,1070], [1073,1074], 
+                [1076,1075], [1077,1078], [1082,1083], [1093,1092], [1098,1097], 
+                [1100,1101], [1112,1111], [1113,1111], [1114,1117], [1115,1117], 
+                [1116,1117], [1120,1121], [1163,1162], [1164,1165],
+                [1171,1170], [1172,1170], [1173,1170], [1174,1170], [1175,1170], [1176,1170], [1177,1170], [1178,1170], [1179,1170],
+                [1180,1170], [1181,1170], [1182,1170], [1183,1170], [1184,1170], [1185,1170], [1186,1170], [1187,1170], [1188,1170], [1189,1170]
+            ],
+
+            "comment4": "offset has to align to fragment blocksize in xy (2048um)"
+        },
+
+    "PredictSynapseTask":
+        {
+            "debug_print_command_only": 1
+            // "sched_roi_outside_roi_ok": 1
+        },
+
+    "PredictSynapseDirTask":
+        {
+            "debug_print_command_only": 1
+            // "sched_roi_outside_roi_ok": 1
+        },
+
+    "Network":
+        {
+            "name": "setup45_ds2_v2",
+            "train_dir" : "/n/groups/htem/Segmentation/networks/cb2_setups/setup45_ds2_v2",
+            "iteration" : 380000,
+            "net_voxel_size": [40, 8, 8],
+            "myelin_prediction": 1,
+            "xy_downsample": 1
+         },
+
+    "PredictTask":
+        {
+            "out_dataset" : "volumes/affs",
+            "block_size_in_chunks" : [1, 1, 1],
+            "num_workers": 12,
+            "debug_print_command_only": 1,
+            "overwrite_sections": [893]
+        },
+
+    "ExtractFragmentTask":
+        {
+            "block_size": [400, 2048, 2048],
+            "num_workers": 1,
+            "fragments_in_xy": 1,
+            "mask_fragments": 0,
+            "use_mahotas": 0,
+            "no_check_dependency": 1,
+            "debug_print_command_only": 1
+        },
+
+    "ExtractSynapsesTask":
+        {
+            "super_fragments_file": "/n/f810/htem/Segmentation/cb2_v4/output.zarr",
+            "super_fragments_dataset": "volumes/super_1x2x2_segmentation_0.500_mipmap/s2",
+            "debug_print_command_only": 1,
+            "db_host": "mongodb://10.117.28.139:27017/",
+            "db_name": "cb2_v4_synapse_pred_cleft_setup01_synapsedb_area_210429",
+            "sub_roi_offset": [2800, 114688, 131072],
+            "sub_roi_shape": [44000, 425984, 786432],
+            "context": [1200, 2048, 2048],
+            "block_size": [4000, 8192, 8192],
+            "score_threshold": 5,
+            "extract_type": "cc",
+            "cc_threshold": 0.5,
+            "loc_type": "edt",
+            "score_type": "sum",
+
+            // specific for cleft
+            "prediction_mode": "cleft_to_pre",
+            "remove_z_dir": true,
+            // scale prediction vector length to reduce FP (?)
+            // "d_vector_scale": 0.6,
+
+            "db_col_name_syn": "synapses",
+            "db_col_name_sf": "superfragments",
+
+            "no_check_dependency": 1,
+            "max_retries": 0,
+
+            // for synapse area measurements
+            "affs_file": "/n/balin_tank_ssd1/htem/Segmentation/cb2_v4/output.zarr",
+            "affs_dataset": "volumes/affs_mipmap/s1",
+            "raw_file": "/n/f810/htem/temcagt/datasets/cb2/zarr_volume/cb2_v3.n5",
+            "raw_dataset": "volumes/raw_mipmap/s2",
+            "realignment_xy_context_nm": 0,
+            "realignment_xy_stride_nm": 1024,  // should be more like 2um
+
+            "overwrite": 0
+        },
+
+    "AgglomerateTask":
+        {
+            "affs_dataset": "/volumes/affs",
+            "fragments_dataset": "/volumes/fragments",
+            "merge_function": "hist_quant_50",
+            "block_size": [6000, 6144, 6144],
+            "context": [1000, 1024, 1024],
+            "num_workers": 1,
+            "cpu_mem": 32,
+            "cpu_time": 0,
+            "max_retries": 1,
+            "no_check_dependency": 1,
+            "debug_print_command_only": 1
+        },
+
+    "SegmentationTask":
+        {
+            "fragments_dataset": "/volumes/fragments",
+            "out_dataset": "volumes/segmentation",
+            "thresholds": [0.6, 0.7, 0.8, 0.85, 0.9],
+            "cpu_mem": 32,
+            "cpu_time": 1,
+            "num_workers": 1
+        },
+
+    "SynfulNetwork":
+        {
+            "name": "setup01_ds4",
+
+            "train_dir" : "/n/groups/htem/Segmentation/networks/cb2_synapse_cleft/setup01_ds4",
+            "iteration" : 460000,
+
+            "train_dir1" : "/n/groups/htem/Segmentation/networks/synful_cb2/setup22_ds4_d_v3",
+            "iteration1" : 700000,
+
+            "net_voxel_size": [40, 16, 16],
+            "xy_downsample": 1,
+
+            "out_properties": {
+              "pred_syn_indicator_out": {
+                "dsname": "pred_syn_indicator",
+                "dtype": "uint8",
+                "scale": 255
+              }
+            },
+
+            "out_properties1": {
+              "pred_partner_vectors": {
+                "dtype": "int8",
+                "scale": 0.25
+                // divide nm prediction by 4 so the effective range of -128 to 127 range ~=> -500nm to 500nm
+              }
+            }
+         }
+}

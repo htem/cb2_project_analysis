@@ -1,0 +1,1 @@
+python -i /n/groups/htem/Segmentation/shared-nondev/segway/gt_scripts/ng_check_cleft_gt.py $*
