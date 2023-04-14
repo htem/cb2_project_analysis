@@ -7,7 +7,7 @@ from processing_cb2 import get_graph
 Example of getting all synapses from specific neurons.
 '''
 
-neurondb_file = '../../database/data/neurons.db'
+neurondb_file = '../../database/data/neurons_grc_mf_pc_230414.db'
 synapsedb_file = '../../database/synapse_database/data/synapses.db'
 superfragmentdb_file = '../../database/synapse_database/data/superfragments.db'
 
