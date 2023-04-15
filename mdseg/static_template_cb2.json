@@ -1,0 +1,40 @@
+{
+  "dimensions": {"x": [4e-9, "m"], "y": [4e-9, "m"], "z": [4e-8, "m"] },
+  "layers": [
+    {
+      "type": "image",
+      "source": "precomputed://s3://bossdb-open-data/nguyen_thomas2022/cb2/em",
+      "name": "em"
+    },
+    {
+      "type": "segmentation",
+      "source": "precomputed://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/mesh4",
+      "linkedSegmentationGroup": "seg",
+      "name": "mesh"
+    },
+    {
+      "type": "segmentation",
+      "source": [
+        // "n5://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/seg5",
+        {
+          "url": "precomputed://s3://bossdb-open-data/nguyen_thomas2022/cb2/seg",
+          "transform": {"matrix": [[1, 0, 0, 0 ], [0, 1, 0, 0 ], [0, 0, 1, 1216 ]]}
+        },
+        "local://equivalences"
+      ],
+      "equivalences": [
+      ],
+      "segments": [
+      ],
+      "name": "seg"
+    }
+  ],
+  "showSlices": false,
+  "selectedLayer": {
+    "layer": "mesh"
+  },
+  "layout": "xy-3d",
+  "crossSectionScale": 400,
+  "projectionScale": 400000,
+  "position": [130360, 118790, 560]
+}
