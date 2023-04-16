@@ -19,7 +19,7 @@ ap.add_argument("--template_file", type=str, default='./static_template_cb2.json
 ap.add_argument("--print_only", action='store_true', default=False, help='Print a pastable JSON state instead of uploading JSON')
 
 ap.add_argument("--filename", type=str, default='state.json', help='GitHub filename')
-ap.add_argument("--token", type=str, default='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', help='GitHub token')
+ap.add_argument("--token", type=str, default='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', help='GitHub token')
 ap.add_argument("--description", type=str, default=None, help='GitHub file description (optional)')
 
 ap.add_argument("--position", type=str, default=None, help='Comma separated')
@@ -35,9 +35,9 @@ neuron_db = segway.mdseg.database.NeuronDBServerSQLite(args.neurondb_file)
 with open(args.template_file) as f:
     view_json = json.loads(jsmin(f.read()))
 
-view_json['layers'][0]['source'] = raw_source
-view_json['layers'][1]['source'] = mesh_source
-view_json['layers'][2]['source'] = seg_source
+# view_json['layers'][0]['source'] = raw_source
+# view_json['layers'][1]['source'] = mesh_source
+# view_json['layers'][2]['source'] = seg_source
 
 if args.position:
     args.position = args.position.split(',')
