@@ -6,9 +6,9 @@ from jsmin import jsmin
 import segway.mdseg.database
 
 ng_client = 'https://htem.github.io/neuroglancer-mdseg'
-raw_source = 'precomputed://s3://bossdb-open-data/nguyen_thomas2022/cb2/em'
-seg_source = 'n5://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/seg5'
-mesh_source = 'precomputed://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/mesh4'
+# raw_source = 'precomputed://s3://bossdb-open-data/nguyen_thomas2022/cb2/em'
+# seg_source = 'n5://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/seg5'
+# mesh_source = 'precomputed://https://catmaid3.hms.harvard.edu/cb2o2/staged_alignment_v3/delete_me/mesh4'
 
 ap = argparse.ArgumentParser()
 ap.add_argument("neurons", type=str, default=None, help='Comma separated')
@@ -19,7 +19,7 @@ ap.add_argument("--template_file", type=str, default='./static_template_cb2.json
 ap.add_argument("--print_only", action='store_true', default=False, help='Print a pastable JSON state instead of uploading JSON')
 
 ap.add_argument("--filename", type=str, default='state.json', help='GitHub filename')
-ap.add_argument("--token", type=str, default='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', help='GitHub token')
+ap.add_argument("--token", type=str, default='', help='GitHub token')
 ap.add_argument("--description", type=str, default=None, help='GitHub file description (optional)')
 
 ap.add_argument("--position", type=str, default=None, help='Comma separated')
@@ -83,6 +83,10 @@ if args.print_only:
 
 from segway.utils import post_gist
 ret = post_gist(json_str, filename=args.filename, token=args.token, description=args.description)
+
+if 'message' in ret and ret['message'] == "Bad credentials":
+    raise RuntimeError("Need a new GitHub gist credential. Get one at https://github.com/settings/tokens/new")
+# breakpoint()
 url = ret['files']['state.json']['raw_url']
 print(f'{ng_client}/#!{url}')
 
