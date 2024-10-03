@@ -11,19 +11,17 @@ This code repository accompanies the Nature 2023 publication [Structured cerebel
 ## Example mesh reconstructions
 
 These are mesh renderings that have been exported (as lists of segments) from our proofreading platform's database (MDSeg).
-Unfortunately at this point the infrastructure is not yet capable of allowing randomly accessing neurons, though this may be added in the future.
+
+To visualize other proofread neurons, see the directions in [mdseg](./mdseg).
 
 ### Granule cells
-* Two adjacent granule cells: [viewer](http://catmaid2.hms.harvard.edu:33401/v/two_grcs/)
-* A few granule cells: [viewer](http://catmaid2.hms.harvard.edu:33401/v/grcs0/)
+* A few granule cells: [viewer](https://htem.github.io/neuroglancer-mdseg/#!https://gist.githubusercontent.com/trivoldus28/263bdc615a2baa985dc9cb4a92981d47/raw/4abb71d4bd52fb20930787818588112d9fd5fea5/state.json)
 
 ![grcs](constructions/resources/grcs.png)
 
 ### Purkinje cells
-**WARNING: These neurons are huge. Make sure you have free RAM (4GB+) before loading.**
-* "purkinje_0" cell: [viewer](http://catmaid2.hms.harvard.edu:33401/v/purkinje_0/)
-* "pc_9" cell: [viewer](http://catmaid2.hms.harvard.edu:33401/v/pc_9/)
-* "pc_15" cell: [viewer](http://catmaid2.hms.harvard.edu:33401/v/pc_15/)
+**WARNING: These neurons are huge. Make sure you have free RAM (4GB+) before loading, and it will take a long time to load the meshes**
+* "purkinje_0" cell: [viewer](https://htem.github.io/neuroglancer-mdseg/#!https://gist.githubusercontent.com/trivoldus28/25e4b83abbfbb05f504f36e81127895c/raw/70543bfe862647f9ed6ca5d72f82b5e6f8bb3e0b/state.json)
 
 ![pc_15](constructions/resources/pc_15.jpg)
 
