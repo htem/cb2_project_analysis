@@ -36,3 +36,5 @@ The below assumes the current directory is `cb2_project_analysis/mdseg/`
 - These config files have `neuron_id`s of proofread neurons:
     - https://github.com/htem/cb2_project_analysis/tree/main/graphs/configs
 - If there's an error with outdated GitHub token, try to make a new one by visiting https://github.com/settings/tokens/new. You would need a GitHub account and remember to select `gist` in the permissions.
+    - Then run the command with `--token YOUR_TOKEN` appended
+    - To see existing tokens, visit https://github.com/settings/tokens
