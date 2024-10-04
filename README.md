@@ -14,6 +14,8 @@ These are mesh renderings that have been exported (as lists of segments) from ou
 
 To visualize other proofread neurons, see the directions in [mdseg](./mdseg).
 
+You can also download exported meshes at https://github.com/htem/cb2-meshes! You can use a program like Blender to open these.
+
 ### Granule cells
 * A few granule cells: [viewer](https://htem.github.io/neuroglancer-mdseg/#!https://gist.githubusercontent.com/trivoldus28/263bdc615a2baa985dc9cb4a92981d47/raw/4abb71d4bd52fb20930787818588112d9fd5fea5/state.json)
 
